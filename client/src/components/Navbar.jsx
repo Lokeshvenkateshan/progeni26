@@ -54,7 +54,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <a href="#" className="mobile-link" onClick={toggleMenu}>Home</a>
+        <a href="#home" className="mobile-link" onClick={toggleMenu}>Home</a>
         <a href="#" className="mobile-link" onClick={toggleMenu}>Events</a>
       </div>
     </nav>

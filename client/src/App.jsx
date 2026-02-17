@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import "./style/main.css";
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 function App() {
 
   return (
     <>
       <Navbar/>
+      <Home/>
     </>
   )
 }
