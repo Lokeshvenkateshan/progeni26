@@ -1,6 +1,8 @@
 /* Google Font */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
 
 * {
   margin: 0;
@@ -11,15 +13,12 @@
 html {
   scroll-behavior: smooth;
 }
-/* html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-} */
+
 
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Orbitron', sans-serif; */
+  font-family: 'Outfit';
   color: white;
   background-color: rgb(10, 10, 15);
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../style/navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
@@ -30,6 +31,23 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleScroll = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        section?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const section = document.getElementById(id);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    setMenuOpen(false);
+  };
 
   return (
     <nav className={`nav-bar ${sticky ? "sticky-header" : ""}`}>
@@ -46,18 +64,19 @@ const Navbar = () => {
       </div>
 
       <ul className="nav-items">
-        <li><a href="#" className="nav-link">Home</a></li>
-        <li><a href="#about" className="nav-link">About Us</a></li>
-        <li><a href="#events" className="nav-link">Events</a></li>
+        {/* <li><a href="#" className="nav-link">Home</a></li> */}
+        <li><a href="#" className="nav-link"><span onClick={() => handleScroll("home")}>HOME</span></a></li>
+        <li><a href="#about" className="nav-link"><span onClick={() => handleScroll("about")}>About Us</span></a></li>
+        <li><a href="#events" className="nav-link"><span onClick={() => handleScroll("events")}>Events</span></a></li>
         
         
       </ul>
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <a href="#home" className="mobile-link" onClick={toggleMenu}>Home</a>
-        <a href="#about" className="mobile-link" onClick={toggleMenu}>About Us</a>
-        <a href="#events" className="mobile-link" onClick={toggleMenu}>Events</a>
+        <a href="#" className="mobile-link" onClick={toggleMenu}><span onClick={() => handleScroll("home")}>HOME</span></a>
+        <a href="#about" className="mobile-link" onClick={toggleMenu}><span onClick={() => handleScroll("about")}>About Us</span></a>
+        <a href="#events" className="mobile-link" onClick={toggleMenu}><span onClick={() => handleScroll("events")}>Events</span></a>
       </div>
     </nav>
   );

@@ -1,85 +1,187 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaShareAlt, FaCalendarAlt, FaClock, FaUsers, FaCheckCircle } from "react-icons/fa";
 import eventsData from "../data/eventsData";
 import "../style/eventdetails.css";
 
+// --- Sub-Components for Cleanliness ---
+
+const Badge = ({ category }) => (
+  <div className="event-badges">
+    <span className="event-badge tech">{category}</span>
+  </div>
+);
+
+const SectionCard = ({ title, children, icon }) => (
+  <article className="event-card fade-in">
+    <h3 className="card-title">
+      {icon && <span className="card-icon">{icon}</span>}
+      {title}
+    </h3>
+    <div className="card-content">{children}</div>
+  </article>
+);
+
 const EventDetails = () => {
   const { id } = useParams();
-  const event = eventsData.find(e => e.id === parseInt(id));
+  const navigate = useNavigate();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [registered, setRegistered] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay for better UX feel (remove if data is instant)
+    const timer = setTimeout(() => {
+      const foundEvent = eventsData.find((e) => e.id === parseInt(id));
+      setEvent(foundEvent);
+      setLoading(false);
+      
+      // Update Page Title for SEO
+      if (foundEvent) {
+        document.title = `${foundEvent.title} | Event Details`;
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [id]);
+
+  const handleRegister = () => {
+    if (!event) return;
+    // Mock registration logic
+    setRegistered(true);
+    setTimeout(() => setRegistered(false), 3000); // Reset after 3s
+    alert(`Successfully registered for ${event.title}!`);
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: event.title,
+        text: `Check out this event: ${event.title}`,
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loader"></div>
+        <p>Loading Event Details...</p>
+      </div>
+    );
+  }
 
   if (!event) {
-    return <h2 style={{ textAlign: "center" }}>Event Not Found</h2>;
+    return (
+      <div className="error-container">
+        <h2>Event Not Found</h2>
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          <FaArrowLeft /> Go Back
+        </button>
+      </div>
+    );
   }
 
   return (
     <section className="event-page">
-      <div className="event-wrapper">
+      <div className="container">
+        {/* Navigation Bar within Page */}
+        <div className="page-nav">
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            <FaArrowLeft /> Back
+          </button>
+          <button className="share-btn" onClick={handleShare} aria-label="Share Event">
+            <FaShareAlt /> Share
+          </button>
+        </div>
 
-        {/* LEFT SIDE */}
-        <div className="event-left">
-
-          <div className="event-badges">
-            <span className="event-badge tech">{event.category}</span>
-          </div>
-
-          <h1 className="event-title">{event.title}</h1>
-
-          <div className="event-card">
-            <p>{event.description}</p>
-          </div>
-
-          {/* FORMAT */}
-          <div className="event-card">
-            <h3>Event Format</h3>
-
-            {event.format.map((round, index) => (
-              <div key={index} className="event-round">
-                <h4>{round.title}</h4>
-                {round.details.map((detail, i) => (
-                  <p key={i}>{detail}</p>
-                ))}
+        <div className="event-wrapper">
+          {/* LEFT SIDE - Main Content */}
+          <div className="event-left">
+            
+            {/* Hero Image Placeholder (If available in data) */}
+            {event.image && (
+              <div className="event-hero-image">
+                <img src={event.image} alt={event.title} loading="lazy" />
+                <div className="image-overlay"></div>
               </div>
-            ))}
+            )}
+
+            <div className="content-spacer">
+              <Badge category={event.category} />
+              <h1 className="event-title">{event.title}</h1>
+              
+              <SectionCard title="About Event">
+                <p className="event-description">{event.description}</p>
+              </SectionCard>
+
+              <SectionCard title="Event Format" icon="">
+                {event.format.map((round, index) => (
+                  <div key={index} className="event-round">
+                    <h4>Round {index + 1}: {round.title}</h4>
+                    <ul className="round-details">
+                      {round.details.map((detail, i) => (
+                        <li key={i}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </SectionCard>
+
+              <SectionCard title="Rules & Regulations" icon="">
+                <ul className="rules-list">
+                  {event.rules.map((rule, index) => (
+                    <li key={index}>{rule}</li>
+                  ))}
+                </ul>
+              </SectionCard>
+            </div>
           </div>
 
-          {/* RULES */}
-          <div className="event-card">
-            <h3>Rules & Regulations</h3>
-            <ul>
-              {event.rules.map((rule, index) => (
-                <li key={index}>{rule}</li>
-              ))}
-            </ul>
-          </div>
+          {/* RIGHT SIDE - Sticky Sidebar */}
+          <aside className="event-right">
+            <div className="event-details-box glass-panel">
+              <h3>Event Info</h3>
+              
+              <dl className="details-list">
+                <div className="event-detail-item">
+                  <dt><FaUsers /> Team Type</dt>
+                  <dd>{event.teamType}</dd>
+                </div>
 
+                <div className="event-detail-item">
+                  <dt><FaClock /> Duration</dt>
+                  <dd>{event.duration}</dd>
+                </div>
+
+                <div className="event-detail-item">
+                  <dt><FaCalendarAlt /> Rounds</dt>
+                  <dd>{event.roundsCount}</dd>
+                </div>
+              </dl>
+
+              <button 
+                className={`event-register-btn ${registered ? 'success' : ''}`} 
+                onClick={handleRegister}
+                disabled={registered}
+              >
+                {registered ? (
+                  <>
+                    <FaCheckCircle /> Registered
+                  </>
+                ) : (
+                  "Register Now"
+                )}
+              </button>
+              
+              {registered && <p className="success-msg">See you there!</p>}
+            </div>
+          </aside>
         </div>
-
-        {/* RIGHT SIDE */}
-        <div className="event-right">
-          <div className="event-details-box">
-            <h3>Details</h3>
-
-            <div className="event-detail-item">
-              <span>Team Type</span>
-              <strong>{event.teamType}</strong>
-            </div>
-
-            <div className="event-detail-item">
-              <span>Duration</span>
-              <strong>{event.duration}</strong>
-            </div>
-
-            <div className="event-detail-item">
-              <span>Number of Rounds</span>
-              <strong>{event.roundsCount}</strong>
-            </div>
-
-            <button className="event-register-btn">
-              Register Now
-            </button>
-          </div>
-        </div>
-
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../style/Events.css";
+import "../style/events.css";
 
 const techEvents = [
   {
