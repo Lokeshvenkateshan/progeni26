@@ -6,46 +6,45 @@ import "../style/Events.css";
 const techEvents = [
   {
     id: 1,
-    title: "Coding",
-    desc: "24-hour competitive programming marathon. Solve complex algorithms under pressure.",
+    title: "Logic Crypt",
+    desc: "Logical thinking and problem-solving",
   },
   {
     id: 2,
-    title: "NormX Event",
-    desc: "Build AI-powered solutions for real-world problems with expert mentorship.",
+    title: "NormX",
+    desc: "Design scalable and structured databases.",
   },
   {
     id: 3,
-    title: "Startup pitch",
-    desc: "Capture the Flag ethical hacking challenge with real-world scenarios.",
+    title: "Byte To Billion",
+    desc: "Pitch innovative tech-driven startup ideas.",
   },
   {
     id: 4,
-    title: "Vibe Coding",
-    desc: "Design and deploy a high-impact landing page in just 4 hours.",
+    title: "Prompt Fury",
+    desc: "Build apps using AI-powered prompting.",
   },
 ];
-
 const nonTechEvents = [
   {
     id: 6,
-    title: "Treasure Hunt",
-    desc: "Solve riddles and uncover hidden secrets across the campus.",
+    title: "Glitch Run",
+    desc: "Treasure hunt of clues and challenges.",
   },
   {
     id: 7,
-    title: "Act And Decode ",
-    desc: "Live music showdown featuring electrifying performances.",
+    title: "Pixel Paradox",
+    desc: "Decode, observe, and express creatively.",
   },
   {
     id: 8,
-    title: " Lucky Star ",
-    desc: "Engage in powerful discussions on trending global topics.",
+    title: "Neon Numerix",
+    desc: "Music, math, and rapid-fire thinking.",
   },
   {
     id: 9,
-    title: "Lucky Corner",
-    desc: "Capture stunning moments and compete for the best frame.",
+    title: "Cyber Spin",
+    desc: "Luck, suspense, and elimination gameplay.",
   },
 ];
 

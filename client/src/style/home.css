@@ -55,6 +55,7 @@
   color: rgba(255, 255, 255, 0.75);
   text-shadow:
     0 0 8px rgba(255, 0, 160, 0.15);
+  letter-spacing: 1.5px;
 }
 
 /* AUTHOR */
