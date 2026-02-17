@@ -1,0 +1,64 @@
+.about-section {
+  min-height: 100vh;
+  padding: 120px 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-container {
+  max-width: 1000px;
+}
+
+/* ===== Main Title ===== */
+.about-main-title {
+  font-size: 3rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Stylish underline */
+.about-main-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  box-shadow: 0 0 12px #ff00a0;
+}
+
+/* ===== Sub Title ===== */
+.about-sub-title {
+  font-size: 2.2rem;
+  margin-top: 30px;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Stylish underline for Progeni */
+.about-sub-title::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  bottom: -8px;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff00a0, #7a04eb);
+  box-shadow: 0 0 15px #7a04eb;
+}
+
+/* ===== Content ===== */
+.about-content {
+  margin-top: 50px;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #dcdcdc;
+  letter-spacing: 0.5px;
+}
