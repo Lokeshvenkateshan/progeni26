@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Events from "./components/Events";
 import EventDetails from "./components/EventDetails";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function HomePage() {
   return (
@@ -14,6 +16,8 @@ function HomePage() {
       <Home />
       <About />
       <Events />
+      <Contact/>
+      <Footer/>
     </>
   );
 }

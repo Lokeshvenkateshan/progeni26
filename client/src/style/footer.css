@@ -1,0 +1,56 @@
+/* .footer-section {
+  padding: 30px 8%;
+  text-align: center;
+  background: rgba(10, 10, 20, 0.9);
+  border-top: 1px solid rgba(122, 4, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+} */
+
+.footer-section {
+  padding: 25px 8%;
+  text-align: center;
+
+  background: rgba(25, 15, 45, 0.6);
+  backdrop-filter: blur(15px);
+
+  border-top: 1px solid rgba(122, 4, 235, 0.4);
+  position: relative;
+}
+
+
+/* Subtle top glow line */
+.footer-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  box-shadow: 0 0 15px #ff00a0;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cfcfcf;
+}
+
+.footer-brand {
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 18px 5%;
+  }
+
+  .footer-content p {
+    font-size: 0.8rem;
+  }
+}
