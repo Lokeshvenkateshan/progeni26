@@ -1,0 +1,125 @@
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #191924;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 150px;
+    padding-right: 150px;
+    transition: 0.3s;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.nav-main a{
+    text-decoration: none;
+}
+.logo-text{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+.logo-span{
+    font-size: 30px;
+    color: #7a04eb;
+}
+.nav-items  {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.nav-items li{
+    text-decoration: none;
+    list-style: none;
+}
+.nav-link{
+    text-decoration: none; 
+    color: white;
+    font-weight: 600;
+    transform-origin: .3s;
+}
+.nav-link:hover{
+    transition: 0.3s;
+    color: #7a04eb;;
+    border-bottom: solid;
+    border-color: #7a04eb;
+}
+@media screen and (max-width: 955px){
+    .nav-bar{
+        padding-left: 30px;
+        padding-right: 30px;
+        transition: 0.3s ease-in;
+    }
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    background: #19192499;
+    text-align: center;
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1000;
+}
+.mobile-menu.open {
+    display: flex;
+  }
+ .mobile-menu.active {
+    display: flex;
+} 
+
+.mobile-menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.mobile-menu a:hover {
+    background: #13131b99;
+}
+
+.mobile-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+}
+
+.nav-items li {
+    margin: 0 10px;
+}
+
+.nav-items a {
+    color: white;
+    text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+    .nav-items {
+        display: none; 
+    }
+
+    .mobile-icon {
+        display: block; 
+    }
+    .mobile-menu {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        z-index: 1000;
+    }
+    .logo-text{
+        font-size: 25px;
+    }
+    .logo-span{
+        font-size: 25px;
+    }
+}
