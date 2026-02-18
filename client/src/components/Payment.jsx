@@ -1,13 +1,28 @@
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import "../style/payment.css";
 
-export default function Payment({ formData, setFormData, prevStep, onComplete }) {
+import { db } from "../data/firebase";
+import {
+  collection,
+  serverTimestamp,
+  doc,
+  runTransaction,
+} from "firebase/firestore";
+
+export default function Payment({
+  formData,
+  setFormData,
+  prevStep,
+  onComplete,
+}) {
   const [txnId, setTxnId] = useState(formData.txnId || "");
   const [screenshot, setScreenshot] = useState(formData.screenshot || null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [proNumber, setProNumber] = useState(null);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!txnId.trim()) {
@@ -19,35 +34,69 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
     }
 
     setError("");
+    setLoading(true);
+
     try {
-    // Prepare form data for Cloudinary
-    const data = new FormData();
-    data.append("file", screenshot);
-    data.append("upload_preset", "payment_unsigned"); // You should create an unsigned preset in Cloudinary
-    data.append("cloud_name", "dpm5bl6qe");
+      // 1️⃣ Upload screenshot to Cloudinary
+      const data = new FormData();
+      data.append("file", screenshot);
+      data.append("upload_preset", "payment_unsigned");
+      data.append("cloud_name", "dpm5bl6qe");
 
-    // Upload to Cloudinary
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/dpm5bl6qe/image/upload",
-      data
-    );
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dpm5bl6qe/image/upload",
+        data,
+      );
 
-    const uploadedUrl = res.data.secure_url;
+      const uploadedUrl = res.data.secure_url;
 
-    setFormData({
-      ...formData,
-      txnId,
-      screenshot: uploadedUrl
-    });
+      // 2️⃣ Generate PRO number safely
+      const counterRef = doc(db, "counters", "registrations");
 
-    // Optional: log or call parent completion
-   /*  if (onComplete) onComplete({ txnId, screenshot: uploadedUrl }); */
-    console.log("Payment data saved:", { txnId, screenshot: uploadedUrl });
+      let newProNumber;
 
-  } catch (err) {
-    console.error(err);
-    setError("Failed to upload screenshot. Try again.");
-  }
+      await runTransaction(db, async (transaction) => {
+        const counterDoc = await transaction.get(counterRef);
+
+        if (!counterDoc.exists()) {
+          throw new Error("Counter document does not exist!");
+        }
+
+        const currentNumber = counterDoc.data().currentNumber;
+        newProNumber = currentNumber + 1;
+
+        transaction.update(counterRef, {
+          currentNumber: newProNumber,
+        });
+
+        const registrationRef = doc(collection(db, "registrations"));
+
+        transaction.set(registrationRef, {
+          ...formData,
+          txnId,
+          screenshot: uploadedUrl,
+          pro_number: `PRO-${newProNumber}`,
+          createdAt: serverTimestamp(),
+        });
+      });
+
+      setProNumber(`PRO-${newProNumber}`);
+
+      setFormData((prev) => ({
+        ...prev,
+        txnId: txnId,
+        screenshot: uploadedUrl,
+        pro_number: `PRO-${newProNumber}`,
+      }));
+
+      setLoading(false);
+
+      if (onComplete) onComplete();
+    } catch (err) {
+      console.error(err);
+      setError("Failed to submit. Try again.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,17 +104,23 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
       <h2 className="pay-title">Complete Your Payment</h2>
 
       <div className="pay-card">
-        {/* QR Section */}
+        {/* SUCCESS MESSAGE */}
+        {/*         {proNumber && (
+          <div className="success-box">
+            🎉 Registration Successful! <br />
+            Your Progeni ID: <strong>{proNumber}</strong>
+          </div>
+        )}
+ */}
+        {/* QR SECTION */}
         <div className="pay-qr-section">
           <div className="pay-qr-box">
-            <img
-              src="/payqr.jpeg"
-              alt="raviharish296@okicici"
-              className="pay-qr-img"
-            />
+            <img src="/payqr.jpeg" alt="UPI QR" className="pay-qr-img" />
           </div>
           <p>Scan & Pay using any UPI App</p>
         </div>
+
+        {/* FORM SECTION */}
         <form onSubmit={handleSubmit}>
           {/* Transaction ID */}
           <div className="pay-input-group">
@@ -93,6 +148,8 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
             )}
           </div>
 
+          {error && <div className="pay-error">{error}</div>}
+
           {/* Buttons */}
           <div className="pay-button-group">
             {prevStep && (
@@ -100,12 +157,11 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
                 Back
               </button>
             )}
-            <button type="submit" className="pay-submit-btn">
-              Submit Payment
+            <button type="submit" className="pay-submit-btn" disabled={loading}>
+              {loading ? "Processing..." : "Submit Payment"}
             </button>
           </div>
         </form>
-
       </div>
     </div>
   );

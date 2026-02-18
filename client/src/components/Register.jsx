@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import PersonalInfo from "./PersonalInfo";
 import EventSelection from "./EventSelection";
-import Payment from "./Payment";  // Import Payment component
+import Payment from "./Payment"; // Import Payment component
 import "../style/register.css";
-
+import Confirmation from "./Confirmation"
 const Register = () => {
   const [step, setStep] = useState(1);
 
@@ -17,8 +17,8 @@ const Register = () => {
     year: "",
     techEvents: [],
     nonTechEvents: [],
-    txnId: "",        // Add txnId to formData
-    screenshot: null  // Add screenshot to formData
+    txnId: "", // Add txnId to formData
+    screenshot: null, // Add screenshot to formData
   });
 
   const nextStep = () => setStep(step + 1);
@@ -41,7 +41,7 @@ const Register = () => {
           formData={formData}
           setFormData={setFormData}
           nextStep={nextStep}
-          prevStep={prevStep}  // optional
+          prevStep={prevStep} // optional
         />
       )}
 
@@ -49,10 +49,11 @@ const Register = () => {
         <Payment
           formData={formData}
           setFormData={setFormData}
-          prevStep={prevStep}  // optional
-          onComplete={() => alert("Registration Completed ✅")}
+          prevStep={prevStep} // optional
+          onComplete={() => setStep(4)}
         />
       )}
+      {step === 4 && <Confirmation formData={formData} />}
     </div>
   );
 };
