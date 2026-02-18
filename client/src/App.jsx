@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import Loader from "./components/Loader";
 import "./style/main.css";
+
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -13,27 +16,32 @@ import Register from "./components/Register";
 function HomePage() {
   return (
     <>
-      {/* <Navbar /> */}
       <Home />
       <About />
       <Events />
-      <Contact/>
-      <Footer/>
+      <Contact />
+      <Footer />
     </>
   );
 }
+
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  if (loading) {
+    return <Loader onFinish={() => setLoading(false)} />;
+  }
+
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/event/:id" element={<EventDetails />} />
-          <Route path="/register" element={<Register/>}/>
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/event/:id" element={<EventDetails />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
   );
 }
 

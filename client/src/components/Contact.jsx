@@ -12,8 +12,8 @@ import {
 } from "react-icons/fa";
 
 const Contact = () => {
-  const [copiedField, setCopiedField] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  
 
   // Team data - easily configurable
   const teamMembers = [
@@ -21,7 +21,7 @@ const Contact = () => {
       id: 1,
       role: "Secretary",
       name: "Yuvaraj",
-      phone: "80724 67509",
+      phone: "+918072467509",
       formattedPhone: "+91 80724 67509"
     },
     {
@@ -34,9 +34,9 @@ const Contact = () => {
     {
       id: 3,
       role: "Event Coordinator",
-      name: "Gaja",
-      phone: "+917777777777",
-      formattedPhone: "+91 97777 77777"
+      name: "Dhiliban",
+      phone: "+916369385748",
+      formattedPhone: "+91 63693 85748"
     }
   ];
 

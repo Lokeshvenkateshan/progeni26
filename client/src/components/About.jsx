@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../style/about.css";
 import {
   FaLightbulb,
   FaBrain,
   FaUsers
 } from "react-icons/fa";
+import ScrollReveal from "scrollreveal";
 
 const About = () => {
+
+  useEffect(() => {
+    const sr = ScrollReveal({
+      distance: "20px",
+      duration: 1100,
+      easing: "ease",
+      opacity: 0,
+      reset: true
+    });
+
+    // Titles
+    sr.reveal(".about-main-title", { origin: "top" });
+    sr.reveal(".about-sub-title", { delay: 200 });
+
+    // Paragraph
+    sr.reveal(".about-content", { origin: "bottom", delay: 300 });
+
+    // Cards (simple stagger)
+    sr.reveal(".about-card", {
+      interval: 200,
+      origin: "bottom",
+      delay: 400
+    });
+
+  }, []);
+
   return (
     <section className="about-section" id="about">
       <div className="about-container">

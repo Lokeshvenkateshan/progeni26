@@ -45,6 +45,10 @@ const Events = () => {
       interval: 200, // this creates stagger effect
       origin: "bottom",
     });
+    sr.reveal(".ent", {
+      interval: 200, // this creates stagger effect
+      origin: "bottom",
+    });
 
   }, []);
 

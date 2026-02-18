@@ -17,7 +17,8 @@ const Home = () => {
         });
 
         sr.reveal(".home-container h1");
-        sr.reveal(".home-container h2", { delay: 300 });
+        sr.reveal(".home-container h4", { origin: "right",delay: 300 });
+        sr.reveal(".home-container h2", { origin: "right",delay: 300 });
         sr.reveal(".home-container h3", { delay: 400 });
         sr.reveal(".home-container h4", { delay: 500 });
         sr.reveal(".home-container .ath", { delay: 600 });
@@ -27,6 +28,7 @@ const Home = () => {
     return (
         <section className="home-section">
             <div className="home-container">
+                <h4>Government College of Engineering</h4>
                 <h1>National Level Technical Symposium</h1>
                 <h2>Progeni'26.0</h2>
                 <h3>Department Of Computer Science And Engineering</h3>
