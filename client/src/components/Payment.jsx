@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import "../style/payment.css";
 
 export default function Payment({ formData, setFormData, prevStep, onComplete }) {
@@ -6,7 +7,7 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
   const [screenshot, setScreenshot] = useState(formData.screenshot || null);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     if (!txnId.trim()) {
@@ -18,16 +19,35 @@ export default function Payment({ formData, setFormData, prevStep, onComplete })
     }
 
     setError("");
+    try {
+    // Prepare form data for Cloudinary
+    const data = new FormData();
+    data.append("file", screenshot);
+    data.append("upload_preset", "payment_unsigned"); // You should create an unsigned preset in Cloudinary
+    data.append("cloud_name", "dpm5bl6qe");
 
-    // Save data to parent state
+    // Upload to Cloudinary
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/dpm5bl6qe/image/upload",
+      data
+    );
+
+    const uploadedUrl = res.data.secure_url;
+
     setFormData({
       ...formData,
       txnId,
-      screenshot
+      screenshot: uploadedUrl
     });
 
-    // Call parent completion
-    if (onComplete) onComplete();
+    // Optional: log or call parent completion
+   /*  if (onComplete) onComplete({ txnId, screenshot: uploadedUrl }); */
+    console.log("Payment data saved:", { txnId, screenshot: uploadedUrl });
+
+  } catch (err) {
+    console.error(err);
+    setError("Failed to upload screenshot. Try again.");
+  }
   };
 
   return (
