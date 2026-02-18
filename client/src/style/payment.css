@@ -173,8 +173,11 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+  .pay-title{
+    font-size: 1.3rem;
+  }
   .pay-container{
-    min-height: 100vh;
+    min-height: 110vh;
     justify-content: flex-start;
   }
   .pay-card { padding: 25px 20px; }

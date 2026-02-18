@@ -128,4 +128,11 @@
   .confirm-card {
     padding: 25px 20px;
   }
+  .confirm-container{
+    min-height: 110vh;
+  }
+  .confirm-title{
+    text-align: center;
+    font-size: 1.2rem;
+  }
 }

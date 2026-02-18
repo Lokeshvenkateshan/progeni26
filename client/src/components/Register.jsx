@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
 import PersonalInfo from "./PersonalInfo";
 import EventSelection from "./EventSelection";
@@ -6,6 +6,18 @@ import Payment from "./Payment"; // Import Payment component
 import "../style/register.css";
 import Confirmation from "./Confirmation"
 const Register = () => {
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({

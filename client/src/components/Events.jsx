@@ -50,7 +50,7 @@ const Events = () => {
 
   return (
     <section className="events-section" id="events">
-      
+
       <div className="events-header">
         <h2 className="events-main-title">Our Events</h2>
         <p className="events-subtitle">
@@ -97,7 +97,25 @@ const Events = () => {
           ))}
         </div>
       </div>
+      <div className="ent">
+        <div className="events-note-container">
+          <p className="events-note-title">Note:</p>
 
+          <ul className="events-note-list">
+            <li>Max 2 Tech + 2 Non-Tech events.</li>
+            <li>Lunch & refreshments included.</li>
+            <li>Online entry → verify at registration desk.</li>
+            <li>College ID mandatory.</li>
+            <li>Valid payment details required.</li>
+          </ul>
+        </div>
+      </div>
+      <button
+        className="events-register-btn"
+        onClick={() => navigate("/register")}
+      >
+        Register Now
+      </button>
     </section>
   );
 };

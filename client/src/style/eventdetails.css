@@ -16,6 +16,7 @@
   padding: 100px 5%;
   min-height: 100vh;
   color: var(--text-main);
+  letter-spacing: 1.5px;
 }
 
 .container {

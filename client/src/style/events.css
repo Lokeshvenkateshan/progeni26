@@ -170,7 +170,136 @@
   transform: translateZ(100px);
   box-shadow: 0 15px 35px rgba(255, 0, 160, 0.5);
 }
+.ent{
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+/* ===== NOTE CONTAINER ===== */
+.events-note-container {
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(10, 10, 10, 0.85);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  width: 620px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
 
+/* Gradient border */
+.events-note-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #7a04eb, #ff00a0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+
+  transition: opacity 0.35s ease;
+}
+
+/* Soft glow (default) */
+.events-note-container {
+  box-shadow:
+    0 10px 35px rgba(122, 4, 235, 0.25),
+    0 0 25px rgba(255, 0, 160, 0.15);
+}
+
+/* ===== HOVER EFFECT ===== */
+.events-note-container:hover {
+  transform: translateY(-6px) scale(1.01);
+
+  box-shadow:
+    0 20px 60px rgba(122, 4, 235, 0.45),
+    0 0 45px rgba(255, 0, 160, 0.35);
+}
+
+/* Border intensifies */
+.events-note-container:hover::before {
+  opacity: 1;
+}
+
+/* ===== OPTIONAL: Light Sweep Animation ===== */
+.events-note-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.events-note-container:hover::after {
+  left: 140%;
+}
+
+/* ===== NOTE TITLE ===== */
+.events-note-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== NOTE LIST ===== */
+.events-note-list {
+  text-align: left;
+  padding-left: 18px;
+  margin: 0;
+  color: #d0d0d0;
+  line-height: 1.7;
+  letter-spacing: 1.2px;
+  font-size: 0.95rem;
+}
+
+.events-note-list li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Neon bullet effect */
+.events-note-list li::marker {
+  color: #ff00a0;
+}
+
+/* ===== REGISTER BUTTON ===== */
+.events-register-btn {
+  margin-top: 30px;
+  padding: 12px 35px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #7a04eb, #ff00a0);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(122, 4, 235, 0.4);
+}
+
+.events-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 40px rgba(255, 0, 160, 0.5),
+    0 0 25px rgba(255, 0, 160, 0.4);
+}
 /* ===== MOBILE SAFE ===== */
 @media (max-width: 768px) {
   .events-section {
@@ -195,5 +324,16 @@
   .events-btn,
   .events-card-line {
     transform: none !important;
+  }
+   .events-note-container {
+    padding: 22px;
+  }
+
+  .events-note-list {
+    font-size: 0.9rem;
+  }
+
+  .events-register-btn {
+    width: 100%;
   }
 }

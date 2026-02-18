@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/payment.css";
 
@@ -16,24 +16,34 @@ export default function Payment({
   prevStep,
   onComplete,
 }) {
+  useEffect(() => {
+    setTxnId(formData.txnId || "");
+    setScreenshot(formData.screenshot || null);
+  }, [formData]);
   const [txnId, setTxnId] = useState(formData.txnId || "");
   const [screenshot, setScreenshot] = useState(formData.screenshot || null);
-  const [error, setError] = useState("");
+  const [txnError, setTxnError] = useState("");
+  const [screenshotError, setScreenshotError] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const [loading, setLoading] = useState(false);
   const [proNumber, setProNumber] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let hasError = false;
+    setTxnError("");
+    setScreenshotError("");
+    setSubmitError("");
     if (!txnId.trim()) {
-      return setError("Please enter UPI Transaction ID");
+      setTxnError("Please enter UPI Transaction ID");
+      hasError = true;
     }
-
     if (!screenshot) {
-      return setError("Please upload payment screenshot");
+      setScreenshotError("Please upload payment screenshot");
+      hasError = true;
     }
 
-    setError("");
+    if (hasError) return;
     setLoading(true);
 
     try {
@@ -94,7 +104,7 @@ export default function Payment({
       if (onComplete) onComplete();
     } catch (err) {
       console.error(err);
-      setError("Failed to submit. Try again.");
+      setSubmitError("Payment submission failed. Please try again.");
       setLoading(false);
     }
   };
@@ -102,17 +112,7 @@ export default function Payment({
   return (
     <div className="pay-container">
       <h2 className="pay-title">Complete Your Payment</h2>
-
       <div className="pay-card">
-        {/* SUCCESS MESSAGE */}
-        {/*         {proNumber && (
-          <div className="success-box">
-            🎉 Registration Successful! <br />
-            Your Progeni ID: <strong>{proNumber}</strong>
-          </div>
-        )}
- */}
-        {/* QR SECTION */}
         <div className="pay-qr-section">
           <div className="pay-qr-box">
             <img src="/payqr.jpeg" alt="UPI QR" className="pay-qr-img" />
@@ -128,11 +128,13 @@ export default function Payment({
             <input
               type="text"
               value={txnId}
-              onChange={(e) => setTxnId(e.target.value)}
+              onChange={(e) => {
+                setTxnId(e.target.value);
+                setFormData((prev) => ({ ...prev, txnId: e.target.value }));
+              }}
+              disabled={loading}
             />
-            {!txnId.trim() && error === "Please enter UPI Transaction ID" && (
-              <div className="pay-error">Please enter UPI Transaction ID</div>
-            )}
+            {txnError && <div className="pay-error">{txnError}</div>}
           </div>
 
           {/* Screenshot Upload */}
@@ -142,18 +144,19 @@ export default function Payment({
               type="file"
               accept="image/*"
               onChange={(e) => setScreenshot(e.target.files[0])}
+              disabled={loading}
             />
-            {!screenshot && error === "Please upload payment screenshot" && (
-              <div className="pay-error">Please upload payment screenshot</div>
-            )}
+            {screenshotError && <div className="pay-error">{screenshotError}</div>}
           </div>
-
-          {error && <div className="pay-error">{error}</div>}
-
+          {submitError && (
+            <div className="pay-error pay-submit-error">
+              {submitError}
+            </div>
+          )}
           {/* Buttons */}
           <div className="pay-button-group">
             {prevStep && (
-              <button type="button" className="pay-back-btn" onClick={prevStep}>
+              <button type="button" className="pay-back-btn" onClick={prevStep} disabled={loading}>
                 Back
               </button>
             )}
