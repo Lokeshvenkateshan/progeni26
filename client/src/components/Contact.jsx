@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../style/contact.css";
 import { 
   FaUserTie, 
@@ -6,89 +6,166 @@ import {
   FaMapMarkerAlt, 
   FaInstagram, 
   FaEnvelope,
-  FaDirections 
+  FaDirections,
+  FaCopy,
+  FaCheck
 } from "react-icons/fa";
 
 const Contact = () => {
-  return (
-    <section className="contact-section" id="contact">
+  const [copiedField, setCopiedField] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Team data - easily configurable
+  const teamMembers = [
+    {
+      id: 1,
+      role: "Secretary",
+      name: "Yuvaraj",
+      phone: "80724 67509",
+      formattedPhone: "+91 80724 67509"
+    },
+    {
+      id: 2,
+      role: "Co-Secretary",
+      name: "Swetha",
+      phone: "+919888888888",
+      formattedPhone: "+91 98888 88888"
+    },
+    {
+      id: 3,
+      role: "Event Coordinator",
+      name: "Gaja",
+      phone: "+917777777777",
+      formattedPhone: "+91 97777 77777"
+    }
+  ];
+
+  // Copy to clipboard handler
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById("contact");
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Mouse move handler for glow effect
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  };
+
+  return (
+    <section 
+      className={`contact-section ${isVisible ? 'animate-in' : ''}`} 
+      id="contact"
+      aria-labelledby="contact-heading"
+    >
       {/* ===== HEADER ===== */}
-      <div className="contact-header">
-        {/* <h2 className="contact-title">Contact Us</h2> */}
-        <h2 className="events-main-title">Contact Us</h2>
+      <header className="contact-header">
+        <h2 id="contact-heading" className="events-main-title">
+          Contact Us
+          <span className="title-glow" aria-hidden="true"></span>
+        </h2>
         <p className="contact-subtitle">
-          Connect with the organizing team of Progeni
+          Connect with the organizing team of <strong>Progeni</strong>
         </p>
-      </div>
+      </header>
 
       {/* ===== TEAM CARDS ===== */}
       <div className="contact-grid">
-
-        <div className="contact-card">
-          <FaUserTie className="contact-icon-top" />
-          <h3>Secretary</h3>
-          <p className="contact-name">Yuvaraj</p>
-          <a href="tel:+919999999999" className="contact-phone">
-            <FaPhoneAlt /> +91 99999 99999
-          </a>
-        </div>
-
-        <div className="contact-card">
-          <FaUserTie className="contact-icon-top" />
-          <h3>Co-Secretary</h3>
-          <p className="contact-name">Swetha</p>
-          <a href="tel:+919888888888" className="contact-phone">
-            <FaPhoneAlt /> +91 98888 88888
-          </a>
-        </div>
-
-        <div className="contact-card">
-          <FaUserTie className="contact-icon-top" />
-          <h3>Event Coordinator</h3>
-          <p className="contact-name">Gaja</p>
-          <a href="tel:+917777777777" className="contact-phone">
-            <FaPhoneAlt /> +91 97777 77777
-          </a>
-        </div>
-
+        {teamMembers.map((member, index) => (
+          <article 
+            key={member.id} 
+            className="contact-card"
+            style={{ animationDelay: `${index * 150}ms` }}
+            onMouseMove={handleMouseMove}
+          >
+            <FaUserTie className="contact-icon-top" aria-hidden="true" />
+            <h3 className="card-role">{member.role}</h3>
+            <p className="contact-name">{member.name}</p>
+            
+            <div className="contact-actions">
+              <a 
+                href={`tel:${member.phone}`} 
+                className="contact-phone"
+                aria-label={`Call ${member.name} at ${member.formattedPhone}`}
+              >
+                <FaPhoneAlt aria-hidden="true" /> 
+                <span>{member.formattedPhone}</span>
+              </a>
+              
+              
+            </div>
+            
+            {/* Hover glow effect */}
+            <span className="card-glow" aria-hidden="true"></span>
+          </article>
+        ))}
       </div>
 
       {/* ===== VENUE SECTION ===== */}
       <div className="contact-venue">
-        <FaMapMarkerAlt className="venue-icon" />
+        <FaMapMarkerAlt className="venue-icon" aria-hidden="true" />
         <h3>Venue</h3>
-        <p>CSE Auditorium</p>
+        <p className="venue-name">Main Auditorium</p>
+        <p className="venue-address">Government College of Engineering, Salem</p>
 
         <a
-          href="https://www.google.com/maps/place/Department+of+Computer+Science+and+Engineering/@11.7134021,78.0875824,19.5z/data=!4m14!1m7!3m6!1s0x3babfb568f8493bb:0x2272d8cbb6f0112d!2sGCE+SALEM+,ECE+DEPARTMENT.!8m2!3d11.7138034!4d78.0871532!16s%2Fg%2F11jjyphcgh!3m5!1s0x3babfa3df7c8b3c1:0x963d35e115455bce!8m2!3d11.7137553!4d78.0879369!16s%2Fg%2F12640phkz?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+          href="https://www.google.com/maps/place/Department+of+Computer+Science+and+Engineering/@11.7134021,78.0875824,19.5z"
           target="_blank"
           rel="noopener noreferrer"
           className="direction-btn"
+          aria-label="Get directions to CSE Auditorium on Google Maps"
         >
-          <FaDirections /> Get Directions
+          <FaDirections aria-hidden="true" /> 
+          <span>Get Directions</span>
+          <span className="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
-      {/* ===== SOCIAL ===== */}
-      <div className="contact-social">
+      {/* ===== SOCIAL LINKS ===== */}
+      <div className="contact-social" role="navigation" aria-label="Social media links">
         <a 
-          href="https://instagram.com/progeni" 
+          href="https://www.instagram.com/progeni26" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="social-link"
+          className="social-link instagram"
+          aria-label="Follow Progeni on Instagram"
         >
-          <FaInstagram /> @progeni
+          <FaInstagram aria-hidden="true" /> 
+          <span>@progeni</span>
+          <span className="social-glow" aria-hidden="true"></span>
         </a>
 
         <a 
-          href="mailto:progeni@email.com" 
-          className="social-link"
+          href="mailto:progeni26.gce@gmail.com" 
+          className="social-link email"
+          aria-label="Email Progeni team"
         >
-          <FaEnvelope /> progeni@email.com
+          <FaEnvelope aria-hidden="true" /> 
+          <span>progeni26.gce@gmail.com</span>
+          <span className="social-glow" aria-hidden="true"></span>
         </a>
       </div>
 
+      {/* ===== TOAST NOTIFICATION ===== */}
+      
     </section>
   );
 };

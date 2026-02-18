@@ -48,7 +48,7 @@ const eventsData = [
 
     format: [
       {
-        title: "Round 1 – SQL Aptitude Test",
+        title: "SQL Aptitude Test",
         details: [
           "Duration: 15 Minutes",
           "Platform: Quiz-based (Quizizz)",
@@ -56,7 +56,7 @@ const eventsData = [
         ]
       },
       {
-        title: "Round 2 – Database Schema Design",
+        title: "Database Schema Design",
         details: [
           "Duration: 30–40 Minutes",
           "Focus: Designing efficient & normalized schemas",

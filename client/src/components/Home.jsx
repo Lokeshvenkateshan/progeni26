@@ -10,7 +10,7 @@ const Home = () => {
     useEffect(() => {
         const sr = ScrollReveal({
             origin: "left",
-            distance: "40px",
+            distance: "20px",
             duration: 1500,
             delay: 200,
             reset: false   // change to true if you want repeat animation
