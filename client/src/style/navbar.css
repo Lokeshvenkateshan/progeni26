@@ -70,6 +70,7 @@
     position: absolute;
     top: 65px;         /* slightly below navbar */
     right: 20px;       /* align near hamburger */
+    left: 0;
     width: 170px;      /* reduced width */
     background: rgba(25, 25, 36, 0.98);
     background: #19192499;

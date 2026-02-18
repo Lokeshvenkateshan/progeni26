@@ -27,22 +27,22 @@ const techEvents = [
 ];
 const nonTechEvents = [
   {
-    id: 6,
+    id: 5,
     title: "Glitch Run",
     desc: "Treasure hunt of clues and challenges.",
   },
   {
-    id: 7,
+    id: 6,
     title: "Pixel Paradox",
     desc: "Decode, observe, and express creatively.",
   },
   {
-    id: 8,
+    id: 7,
     title: "Neon Numerix",
     desc: "Music, math, and rapid-fire thinking.",
   },
   {
-    id: 9,
+    id: 8,
     title: "Cyber Spin",
     desc: "Luck, suspense, and elimination gameplay.",
   },
