@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../style/navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";   // 👈 import logo
+import logo from "../assets/Logo.png";   // 👈 import logo
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
