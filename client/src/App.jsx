@@ -8,6 +8,7 @@ import Events from "./components/Events";
 import EventDetails from "./components/EventDetails";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Register from "./components/Register";
 
 function HomePage() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/event/:id" element={<EventDetails />} />
+          <Route path="/register" element={<Register/>}/>
         </Routes>
       </Router>
     </>

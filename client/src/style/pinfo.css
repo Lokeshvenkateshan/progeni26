@@ -1,0 +1,203 @@
+.register-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  color: white;
+}
+
+/* Glass Form */
+.register-form {
+  width: 50%;   /* slightly wider for 2-column layout */
+  padding: 40px;
+  border-radius: 18px;
+  background: rgba(15, 15, 25, 0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 25px rgba(122, 4, 235, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.03);
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* ✅ TWO PER ROW */
+  gap: 60px;
+}
+
+/* Field Wrapper */
+.field-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Neon Input */
+.input-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.input-field svg {
+  color: rgba(0, 234, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* Input */
+.input-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.input-field input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Focus Glow */
+.input-field:focus-within {
+  border-color: rgba(0, 234, 255, 0.6);
+
+  box-shadow:
+    0 0 10px rgba(0, 234, 255, 0.35),
+    0 0 18px rgba(0, 234, 255, 0.12);
+}
+
+/* Select Styling */
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: white;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+select:focus {
+  border-color: rgba(255, 0, 160, 0.7);
+
+  box-shadow:
+    0 0 10px rgba(255, 0, 160, 0.35),
+    0 0 18px rgba(255, 0, 160, 0.12);
+}
+
+/* Error States */
+.input-field.error {
+  border-color: rgba(255, 60, 60, 0.7);
+
+  box-shadow:
+    0 0 8px rgba(255, 60, 60, 0.25);
+}
+
+.error-select {
+  border-color: rgba(255, 60, 60, 0.7);
+  box-shadow: 0 0 8px rgba(255, 60, 60, 0.25);
+}
+
+/* Error Text */
+.error-text {
+  margin-top: 6px;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+
+  color: #ff4d4d;
+
+  text-align: left;
+  padding-left: 6px;
+
+  animation: fadeIn 0.25s ease;
+}
+
+/* Next Button */
+.next-btn {
+  margin-top: 28px;
+  padding: 14px 40px;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #ff00a0, #7a04eb);
+  border: none;
+
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(255, 0, 160, 0.6),
+    0 0 30px rgba(122, 4, 235, 0.5);
+
+  transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+
+  box-shadow:
+    0 0 22px rgba(255, 0, 160, 0.9),
+    0 0 45px rgba(122, 4, 235, 0.8);
+}
+
+/* Smooth Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .register-form {
+    width: 92%;
+    padding: 25px;
+    border-radius: 16px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .input-field {
+    padding: 11px;
+  }
+
+  .input-field input,
+  select {
+    font-size: 0.75rem;
+  }
+
+  .error-text {
+    font-size: 0.6rem;
+  }
+
+  .next-btn {
+    width: 90%;
+    font-size: 0.75rem;
+    padding: 12px;
+  }
+}

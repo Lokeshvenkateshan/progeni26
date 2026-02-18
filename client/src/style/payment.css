@@ -1,0 +1,183 @@
+/* Payment Page Container */
+.pay-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+/* Page Title */
+.pay-title {
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+  color: #ff00a0;
+  text-shadow: 0 0 12px rgba(255, 0, 160, 0.6);
+  text-align: center;
+}
+
+/* Glass Payment Card */
+.pay-card {
+  background: rgba(15, 15, 25, 0.85);
+  backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 420px;
+  padding: 35px 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 25px rgba(122, 4, 235, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.03);
+  animation: pay-fadeIn 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card Title */
+.pay-card h2 {
+  margin-bottom: 30px;
+  color: #00f0ff;
+  font-size: 1.4rem;
+  text-shadow: 0 0 6px #00f0ff;
+}
+
+/* QR Section */
+.pay-qr-section {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.pay-qr-section p{
+  color: #00f0ff;
+} 
+.pay-qr-box {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  border: 3.5px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 18, 0.95);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  overflow: hidden;
+}
+
+.pay-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Input Groups */
+.pay-input-group {
+  width: 100%;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.pay-input-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pay-input-group input[type="text"],
+.pay-input-group input[type="file"] {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 18, 0.8);
+  color: white;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.pay-input-group input:focus {
+  outline: none;
+  border-color: #00f0ff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+/* Inline Error */
+.pay-error {
+  color: red;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Button Group */
+.pay-button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* Common Button Styles */
+.pay-button-group button {
+  flex: 1;
+  padding: 13px 0;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* BACK Button */
+.pay-back-btn {
+  background: linear-gradient(90deg, #00f0ff, #7a04eb);
+  color: white;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.6), 0 0 35px rgba(122, 4, 235, 0.5);
+}
+
+.pay-back-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.9), 0 0 45px rgba(122, 4, 235, 0.8);
+}
+
+/* PAY Button */
+.pay-submit-btn {
+  background: linear-gradient(90deg, #ff00a0, #7a04eb);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 18px rgba(255, 0, 160, 0.6), 0 0 35px rgba(122, 4, 235, 0.5);
+}
+
+.pay-submit-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 25px rgba(255, 0, 160, 0.9), 0 0 45px rgba(122, 4, 235, 0.8);
+}
+
+/* Animations */
+@keyframes pay-fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .pay-container{
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .pay-card { padding: 25px 20px; }
+  .pay-qr-box { width: 140px; height: 140px; }
+  .pay-button-group button { font-size: 0.8rem; padding: 11px 0; }
+}

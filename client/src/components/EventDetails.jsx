@@ -27,7 +27,6 @@ const EventDetails = () => {
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [registered, setRegistered] = useState(false);
 
   useEffect(() => {
     // Simulate loading delay for better UX feel (remove if data is instant)
@@ -44,14 +43,6 @@ const EventDetails = () => {
 
     return () => clearTimeout(timer);
   }, [id]);
-
-  const handleRegister = () => {
-    if (!event) return;
-    // Mock registration logic
-    setRegistered(true);
-    setTimeout(() => setRegistered(false), 3000); // Reset after 3s
-    alert(`Successfully registered for ${event.title}!`);
-  };
 
   const handleShare = () => {
     if (navigator.share) {
@@ -163,22 +154,9 @@ const EventDetails = () => {
                   <dd>{event.roundsCount}</dd>
                 </div>
               </dl>
-
-              <button 
-                className={`event-register-btn ${registered ? 'success' : ''}`} 
-                onClick={handleRegister}
-                disabled={registered}
-              >
-                {registered ? (
-                  <>
-                    <FaCheckCircle /> Registered
-                  </>
-                ) : (
-                  "Register Now"
-                )}
+              <button className="event-register-btn" onClick={()=> navigate('/register')}>
+                Register Now
               </button>
-              
-              {registered && <p className="success-msg">See you there!</p>}
             </div>
           </aside>
         </div>

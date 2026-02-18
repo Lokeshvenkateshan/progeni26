@@ -1,0 +1,176 @@
+.progress-bar {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Line behind steps */
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Individual Step */
+.step {
+  position: relative;
+  z-index: 2;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Active Step */
+.step.active {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow:
+    0 0 12px rgba(0, 240, 255, 0.35),
+    0 0 22px rgba(0, 240, 255, 0.15);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+}
+
+/* Glowing connector effect */
+.step.active::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 12px #00f0ff;
+}
+
+.step.active {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.step.completed {
+  color: #00ff9f;
+
+  background: rgba(0, 255, 159, 0.08);
+  border: 1px solid rgba(0, 255, 159, 0.35);
+
+  box-shadow:
+    0 0 10px rgba(0, 255, 159, 0.35),
+    0 0 20px rgba(0, 255, 159, 0.15);
+
+  text-shadow: 0 0 6px rgba(0, 255, 159, 0.4);
+}
+
+.tick {
+  margin-right: 8px;
+  font-size: 0.7rem;
+
+  color: #00ff9f;
+
+  filter: drop-shadow(0 0 6px rgba(0, 255, 159, 0.6));
+}
+.step.completed {
+  animation: completedGlow 3s ease-in-out infinite;
+}
+
+@keyframes completedGlow {
+  0% { box-shadow: 0 0 8px rgba(0, 255, 159, 0.25); }
+  50% { box-shadow: 0 0 16px rgba(0, 255, 159, 0.45); }
+  100% { box-shadow: 0 0 8px rgba(0, 255, 159, 0.25); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+  50% { box-shadow: 0 0 22px rgba(0, 240, 255, 0.6); }
+  100% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+}
+
+@media (max-width: 768px) {
+
+  .progress-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 20px auto;
+  }
+
+  .progress-bar::before {
+    display: none;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+
+    padding: 9px 12px;
+    font-size: 0.75rem;
+    border-radius: 10px;
+
+    position: relative;
+  }
+
+  /* ✅ Vertical Connector */
+  .step::before {
+    content: "";
+    position: absolute;
+
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2px;
+    height: 14px;
+
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .step:first-child::before {
+    display: none;
+  }
+
+  /* ✅ REMOVE bottom glow */
+  .step.active::after {
+    bottom: auto;
+    left: auto;
+    transform: none;
+    
+    content: "";
+    position: absolute;
+
+    right: -14px;     /* 👈 SIDE */
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: #00f0ff;
+
+    box-shadow:
+      0 0 8px #00f0ff,
+      0 0 14px rgba(0, 240, 255, 0.7);
+  }
+}
+
+
+
+
