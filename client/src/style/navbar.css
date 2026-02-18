@@ -24,7 +24,7 @@
 
 /* ✅ Bigger Logo */
 .nav-logo{
-    height: 75px;      /* increased size */
+    height: 45px;      /* increased size */
     width: auto;
     object-fit: contain;
     cursor: pointer;
@@ -146,6 +146,6 @@
     }
 
     .nav-logo{
-        height: 55px;   /* responsive size */
+        height: 35px;   /* responsive size */
     }
 }

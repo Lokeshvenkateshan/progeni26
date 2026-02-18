@@ -69,17 +69,17 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <a href="#" className="nav-link">
+          <a href="#about" className="nav-link">
             <span onClick={() => handleScroll("about")}>About Us</span>
           </a>
         </li>
         <li>
-          <a href="#" className="nav-link">
+          <a href="#events" className="nav-link">
             <span onClick={() => handleScroll("events")}>Events</span>
           </a>
         </li>
         <li>
-          <a href="#" className="nav-link">
+          <a href="#contact" className="nav-link">
             <span onClick={() => handleScroll("contact")}>Contact</span>
           </a>
         </li>
@@ -89,13 +89,13 @@ const Navbar = () => {
         <a href="#" className="mobile-link">
           <span onClick={() => handleScroll("home")}>HOME</span>
         </a>
-        <a href="#" className="mobile-link">
+        <a href="#about" className="mobile-link">
           <span onClick={() => handleScroll("about")}>About Us</span>
         </a>
-        <a href="#" className="mobile-link">
+        <a href="#events" className="mobile-link">
           <span onClick={() => handleScroll("events")}>Events</span>
         </a>
-        <a href="#" className="mobile-link">
+        <a href="#contact" className="mobile-link">
           <span onClick={() => handleScroll("contact")}>Contact</span>
         </a>
       </div>

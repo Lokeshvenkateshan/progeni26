@@ -1,7 +1,11 @@
 import React from 'react'
 import Countdown from './CountDown'
 import "../style/home.css"
+import { Link } from 'react-router-dom'
+import {  useNavigate } from "react-router-dom";
 const Home = () => {
+    const navigate = useNavigate();
+    console.log(import.meta.env);
     return (
         <section className="home-section">
             <div className="home-container">
@@ -12,9 +16,13 @@ const Home = () => {
                 <span className='ath'>-Alan Turing</span>
                 <Countdown targetDate="March 13, 2026 00:00:00" />
                 <div className="home-buttons">
-                    <button>Discover Events</button>
-                    <button>Who We Are</button>
-                    <button className="primary">Register Now</button>
+                    <a href="#events"><button>Discover Events</button></a>
+                    
+                    <a href="#about"><button>Who We Are</button></a>
+                    
+                    <button className="primary"onClick={()=>navigate('/register')} >Register Now</button>
+                    
+                    
                 </div>
             </div>
         </section>
