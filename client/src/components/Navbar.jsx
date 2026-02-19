@@ -53,9 +53,9 @@ const Navbar = () => {
   return (
     <nav className={`nav-bar ${sticky ? "sticky-header" : ""}`}>
       <div className="nav-main">
-        <a href="/">
+        <p>
           <img src={logo} alt="Progeni Logo" className="nav-logo" />
-        </a>
+        </p>
       </div>
 
       <div className="mobile-icon" onClick={toggleMenu}>

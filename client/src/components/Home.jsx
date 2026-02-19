@@ -43,7 +43,7 @@ const Home = () => {
 
         <Countdown targetDate="March 13, 2026 00:00:00" />
 
-        <p className="event-date"> March 14, 2026</p>
+        <p className="event-date"> March 13, 2026</p>
 
         <div className="home-buttons">
           <a href="#events">

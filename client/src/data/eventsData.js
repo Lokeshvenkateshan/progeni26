@@ -12,9 +12,9 @@ const eventsData = [
 
     format: [
       {
-        title: "Aptitude & C Programming Test",
+        title: "MCQ Test",
         details: ["Duration: 20 Minutes",
-          "Structure: 5 General Aptitude Questions and 5 C Programming Aptitude Questions",
+          "Structure: 20 Technical MCQ's",
         ]
       },
       {
@@ -148,14 +148,14 @@ const eventsData = [
       "Treasure Hunt is a fun-filled non-technical team event that tests participants’ logical thinking, observation skills, teamwork, and creativity.",
 
     teamType: "Team (8 members)",
-    duration: "30 Minutes",
+    duration: "1 Hour",
     roundsCount: 1,
 
     format: [
       {
         title: "Hunting the Treasures",
         details: [
-          "Duration: 40 Minutes",
+          "Duration: 1 Hour",
           "Teams will solve clues, crack puzzles, and complete exciting challenges across multiple locations to reach the final treasure. ",
           " Each clue brings you closer to victory, promising thrill, smart play, and unforgettable memories."
         ]
@@ -207,10 +207,12 @@ const eventsData = [
     ],
 
     rules: [
-      "Team event (4–5 members per team)",
-      "Only one member can pick objects/answer cards per round",
-      "Strict adherence to time limits",
-      "Malpractice leads to disqualification"
+      "Each team must have 3–4 members.",
+      "The image will be shown to all teams at the same time.",
+      "Teams must use the website buzzer to answer. The first team to press gets the chance. If wrong, the next team can answer.",
+      "In Round 2, one member will act and teammates must guess.",
+      "No speaking, writing, showing letters/numbers, or using mobile phones.",
+      "Follow fair play. Judges decisions are final."
     ]
   },
 
@@ -227,28 +229,34 @@ const eventsData = [
 
     format: [
       {
-        title: "Round 1",
+        title: "Pick the Beat",
         details: [
           "Duration: 20 Minutes",
           "Teams must identify and pick objects related to a played song within 1 minute.",
-          "Only one member per team is allowed to select the object."
+          "Only one member per team is allowed to select the object.",
+          "Teams must use the website buzzer to answer.",
+          " The first team to press the buzzer gets the first chance.",
+          " If incorrect, the chance passes to the next team."
         ]
       },
       {
-        title: "Round 2",
+        title: "Math Rush",
         details: [
           "Duration: 25 Minutes",
           "Teams solve mathematical questions and pick the correct answer card within 2 minutes.",
-          "Points are awarded based on accuracy and speed"
+          "Points are awarded based on accuracy and speed.",
+          "Teams must use the website buzzer to answer.",
+          "The first team to press the buzzer gets the first chance.",
+          "If incorrect, the chance passes to the next team."
         ]
       }
     ],
 
     rules: [
-      "Team event (4–5 members per team)",
-      "Only one member can pick objects/answer cards per round",
-      "Strict adherence to time limits",
-      "Malpractice leads to disqualification"
+      "Team event (4–5 members per team).",
+      "Only one member can pick objects/answer cards per round.",
+      "Strict adherence to time limits.",
+      "Malpractice leads to disqualification."
     ]
   },
 

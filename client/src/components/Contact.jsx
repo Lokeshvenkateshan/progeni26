@@ -28,12 +28,12 @@ const Contact = () => {
       id: 2,
       role: "Co-Secretary",
       name: "Swetha",
-      phone: "+919888888888",
-      formattedPhone: "+91 98888 88888"
+      phone: "+917358931344",
+      formattedPhone: "+91 73589 31344"
     },
     {
       id: 3,
-      role: "Event Coordinator",
+      role: "OEC",
       name: "Dhiliban",
       phone: "+916369385748",
       formattedPhone: "+91 63693 85748"
