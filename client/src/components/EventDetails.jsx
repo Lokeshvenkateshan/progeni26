@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaShareAlt, FaCalendarAlt, FaClock, FaUsers, FaCheckCircle } from "react-icons/fa";
+import { FaMoneyBillWave,FaArrowLeft, FaShareAlt, FaCalendarAlt, FaClock, FaUsers, FaCheckCircle } from "react-icons/fa";
 import eventsData from "../data/eventsData";
 import "../style/eventdetails.css";
 
@@ -153,6 +153,14 @@ const EventDetails = () => {
                   <dt><FaCalendarAlt /> Rounds</dt>
                   <dd>{event.roundsCount}</dd>
                 </div>
+
+                {event.category === "Technical" && (
+                <div className="event-detail-item">
+                    <dt><FaMoneyBillWave /> Rewards</dt>
+                    <dd>Cash Prize</dd>
+                </div>
+                )}
+
               </dl>
               <button className="event-register-btn" onClick={()=> navigate('/register')}>
                 Register Now

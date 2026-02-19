@@ -2,19 +2,44 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "scrollreveal";
 import "../style/events.css";
+import { FaMoneyBillWave, FaGift } from "react-icons/fa";
 
 const techEvents = [
   { id: 1, title: "Logic Crypt", desc: "Logical thinking and problem-solving" },
   { id: 2, title: "NormX", desc: "Design scalable and structured databases." },
-  { id: 3, title: "Byte To Billion", desc: "Pitch innovative tech-driven startup ideas." },
-  { id: 4, title: "Prompt Fury", desc: "Build apps using AI-powered prompting." },
+  {
+    id: 3,
+    title: "Byte To Billion",
+    desc: "Pitch innovative tech-driven startup ideas.",
+  },
+  {
+    id: 4,
+    title: "Prompt Fury",
+    desc: "Build apps using AI-powered prompting.",
+  },
 ];
 
 const nonTechEvents = [
-  { id: 5, title: "Glitch Run", desc: "Treasure hunt of clues and challenges." },
-  { id: 6, title: "Pixel Paradox", desc: "Decode, observe, and express creatively." },
-  { id: 7, title: "Neon Numerix", desc: "Music, math, and rapid-fire thinking." },
-  { id: 8, title: "Cyber Spin", desc: "Luck, suspense, and elimination gameplay." },
+  {
+    id: 5,
+    title: "Glitch Run",
+    desc: "Treasure hunt of clues and challenges.",
+  },
+  {
+    id: 6,
+    title: "Pixel Paradox",
+    desc: "Decode, observe, and express creatively.",
+  },
+  {
+    id: 7,
+    title: "Neon Numerix",
+    desc: "Music, math, and rapid-fire thinking.",
+  },
+  {
+    id: 8,
+    title: "Cyber Spin",
+    desc: "Luck, suspense, and elimination gameplay.",
+  },
 ];
 
 const Events = () => {
@@ -49,12 +74,14 @@ const Events = () => {
       interval: 200, // this creates stagger effect
       origin: "bottom",
     });
-
+    sr.reveal(".events-prize-text", {
+      interval: 200, // this creates stagger effect
+      origin: "bottom",
+    });
   }, []);
 
   return (
     <section className="events-section" id="events">
-
       <div className="events-header">
         <h2 className="events-main-title">Our Events</h2>
         <p className="events-subtitle">
@@ -106,6 +133,7 @@ const Events = () => {
           <p className="events-note-title">Note:</p>
 
           <ul className="events-note-list">
+            <li>Entry Fee - Rs.250 only</li>
             <li>Max 2 Tech + 2 Non-Tech events.</li>
             <li>Lunch & refreshments included.</li>
             <li>Online entry → verify at registration desk.</li>
@@ -114,6 +142,20 @@ const Events = () => {
           </ul>
         </div>
       </div>
+      {/* Prize Highlight Text */}
+      {/* Prize Highlight Section */}
+      <div className="events-prize-text">
+        <div className="events-prize-item">
+          <FaMoneyBillWave className="events-prize-icon cash-icon" />
+          <span>Cash Prizes Available for Winners</span>
+        </div>
+
+        <div className="events-prize-item">
+          <FaGift className="events-prize-icon goodies-icon" />
+          <span>Welcome kit for All Participants</span>
+        </div>
+      </div>
+
       <button
         className="events-register-btn"
         onClick={() => navigate("/register")}

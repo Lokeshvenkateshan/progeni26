@@ -159,6 +159,11 @@ const PersonalInfo = ({ formData, setFormData, nextStep }) => {
             <option value="">Select Department</option>
             <option value="CSE">CSE</option>
             <option value="IT">IT</option>
+            <option value="AI_ML">AI-ML</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="Other">Other</option>
           </select>
           {errors.department && <p className="error-text">{errors.department}</p>}
         </div>

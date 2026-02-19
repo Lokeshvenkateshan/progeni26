@@ -16,38 +16,55 @@ export default function Payment({
   prevStep,
   onComplete,
 }) {
-  useEffect(() => {
-    setTxnId(formData.txnId || "");
-    setScreenshot(formData.screenshot || null);
-  }, [formData]);
+
+  const UPI_ID = "raviharish296@okicici";
+
   const [txnId, setTxnId] = useState(formData.txnId || "");
   const [screenshot, setScreenshot] = useState(formData.screenshot || null);
   const [txnError, setTxnError] = useState("");
   const [screenshotError, setScreenshotError] = useState("");
   const [submitError, setSubmitError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [proNumber, setProNumber] = useState(null);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setTxnId(formData.txnId || "");
+    setScreenshot(formData.screenshot || null);
+  }, [formData]);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(UPI_ID);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     let hasError = false;
     setTxnError("");
     setScreenshotError("");
     setSubmitError("");
+
     if (!txnId.trim()) {
       setTxnError("Please enter UPI Transaction ID");
       hasError = true;
     }
+
     if (!screenshot) {
       setScreenshotError("Please upload payment screenshot");
       hasError = true;
     }
 
     if (hasError) return;
+
     setLoading(true);
 
     try {
-      // 1️⃣ Upload screenshot to Cloudinary
       const data = new FormData();
       data.append("file", screenshot);
       data.append("upload_preset", "payment_unsigned");
@@ -55,24 +72,18 @@ export default function Payment({
 
       const res = await axios.post(
         "https://api.cloudinary.com/v1_1/dpm5bl6qe/image/upload",
-        data,
+        data
       );
 
       const uploadedUrl = res.data.secure_url;
 
-      // 2️⃣ Generate PRO number safely
       const counterRef = doc(db, "counters", "registrations");
-
       let newProNumber;
 
       await runTransaction(db, async (transaction) => {
         const counterDoc = await transaction.get(counterRef);
-
-        if (!counterDoc.exists()) {
-          throw new Error("Counter document does not exist!");
-        }
-
         const currentNumber = counterDoc.data().currentNumber;
+
         newProNumber = currentNumber + 1;
 
         transaction.update(counterRef, {
@@ -90,18 +101,16 @@ export default function Payment({
         });
       });
 
-      setProNumber(`PRO-${newProNumber}`);
-
       setFormData((prev) => ({
         ...prev,
-        txnId: txnId,
+        txnId,
         screenshot: uploadedUrl,
         pro_number: `PRO-${newProNumber}`,
       }));
 
       setLoading(false);
-
       if (onComplete) onComplete();
+
     } catch (err) {
       console.error(err);
       setSubmitError("Payment submission failed. Please try again.");
@@ -112,7 +121,10 @@ export default function Payment({
   return (
     <div className="pay-container">
       <h2 className="pay-title">Complete Your Payment</h2>
+
       <div className="pay-card">
+
+        {/* QR Section */}
         <div className="pay-qr-section">
           <div className="pay-qr-box">
             <img src="/payqr.jpeg" alt="UPI QR" className="pay-qr-img" />
@@ -120,9 +132,24 @@ export default function Payment({
           <p>Scan & Pay using any UPI App</p>
         </div>
 
-        {/* FORM SECTION */}
+        {/* UPI COPY SECTION */}
+        <div className="upi-copy-section">
+          <p className="upi-label">UPI ID</p>
+          <div className="upi-box">
+            <span>{UPI_ID}</span>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="upi-copy-btn"
+            >
+              {copied ? "Copied!" : "Copy"}
+            </button>
+          </div>
+        </div>
+
+        {/* FORM */}
         <form onSubmit={handleSubmit}>
-          {/* Transaction ID */}
+
           <div className="pay-input-group">
             <label>UPI Transaction ID</label>
             <input
@@ -137,7 +164,6 @@ export default function Payment({
             {txnError && <div className="pay-error">{txnError}</div>}
           </div>
 
-          {/* Screenshot Upload */}
           <div className="pay-input-group">
             <label>Upload Payment Screenshot</label>
             <input
@@ -146,25 +172,46 @@ export default function Payment({
               onChange={(e) => setScreenshot(e.target.files[0])}
               disabled={loading}
             />
-            {screenshotError && <div className="pay-error">{screenshotError}</div>}
+            {screenshotError && (
+              <div className="pay-error">{screenshotError}</div>
+            )}
           </div>
+
           {submitError && (
             <div className="pay-error pay-submit-error">
               {submitError}
             </div>
           )}
-          {/* Buttons */}
+
           <div className="pay-button-group">
             {prevStep && (
-              <button type="button" className="pay-back-btn" onClick={prevStep} disabled={loading}>
+              <button
+                type="button"
+                className="pay-back-btn"
+                onClick={prevStep}
+                disabled={loading}
+              >
                 Back
               </button>
             )}
-            <button type="submit" className="pay-submit-btn" disabled={loading}>
+            <button
+              type="submit"
+              className="pay-submit-btn"
+              disabled={loading}
+            >
               {loading ? "Processing..." : "Submit Payment"}
             </button>
           </div>
         </form>
+
+        {/* HELP SECTION */}
+        <div className="pay-help-section">
+          <p>Need Help? Harish R</p>
+          <a href="tel:+916381173758" className="help-phone">
+            📞 +91 63811 73758
+          </a>
+        </div>
+
       </div>
     </div>
   );

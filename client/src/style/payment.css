@@ -184,3 +184,104 @@
   .pay-qr-box { width: 140px; height: 140px; }
   .pay-button-group button { font-size: 0.8rem; padding: 11px 0; }
 }
+
+/* ================= UPI COPY SECTION ================= */
+
+.upi-copy-section {
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.upi-label {
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.upi-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: white;
+  gap: 10px;
+}
+
+.upi-copy-btn {
+  background: linear-gradient(90deg, #ff00a0, #7a04eb);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upi-copy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 0, 160, 0.6);
+}
+
+/* ================= HELP SECTION ================= */
+
+.pay-help-section {
+  width: 100%;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #00f0ff;
+}
+
+.help-phone {
+  display: inline-block;
+  margin-top: 8px;
+  color: #ff00a0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.help-phone:hover {
+  text-shadow: 0 0 10px #ff00a0;
+}
+/* ===== UPI COPY MOBILE RESPONSIVE ===== */
+@media (max-width: 480px) {
+
+  .upi-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .upi-copy-btn {
+    width: 100%;
+  }
+
+}
+/* Style the native Choose File button */
+.pay-input-group input[type="file"]::file-selector-button {
+  background: linear-gradient(90deg, #ff00a0, #7a04eb);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.pay-input-group input[type="file"]::file-selector-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 0, 160, 0.6);
+}
