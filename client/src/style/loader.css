@@ -14,23 +14,24 @@
 
 .loader-video {
   width: 22%;
-  height: 30%;
-  object-fit: cover;
+  height: auto;        /* 🔥 important */
+  object-fit: contain; /* better for centered logo/video */
 }
+
 
 /* Optional fade animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@media (max-width:780px){
-  .loader-container{
-    
-  }
-    .loader-video{
-        width: 68%;
-        height: 20%;
+@media (max-width: 780px) {
 
-    }
-    
+  .loader-container {
+    height: 100svh;   /* 🔥 fixes mobile viewport height bug */
+  }
+
+  .loader-video {
+    width: 70%;
+    height: auto;     /* remove fixed height */
+  }
 }
