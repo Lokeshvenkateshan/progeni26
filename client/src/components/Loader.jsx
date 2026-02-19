@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../style/loader.css";
-import loaderVideo from "../assets/loader.mp4";
+import loaderVideo from "../assets/new_loader.mp4";
 
 const Loader = ({ onFinish }) => {
 

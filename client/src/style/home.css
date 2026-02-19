@@ -70,6 +70,21 @@
     0 0 12px rgba(0, 234, 255, 0.35);
   position: relative;
 }
+.event-date {
+  margin-top: 20px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #7a04eb, #ff00a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.date-icon {
+  margin-right: 8px;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  color:  #7a04eb;
+}
+
 
 /* OPTIONAL subtle divider glow */
 .home-container .ath::before {
@@ -201,6 +216,9 @@
     letter-spacing: 1.5px;
     margin-bottom: 30px;
     font-weight: bolder;
+  }
+  .event-date{
+    font-size: 0.7rem;
   }
 }
 }

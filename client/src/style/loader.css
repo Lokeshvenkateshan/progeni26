@@ -23,9 +23,14 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@media screen and (max-width: 768px){
+@media (max-width:780px){
+  .loader-container{
+    
+  }
     .loader-video{
-        width: 69%;
-        height: 25%;
+        width: 68%;
+        height: 20%;
+
     }
+    
 }
