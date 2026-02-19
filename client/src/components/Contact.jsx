@@ -127,7 +127,7 @@ const Contact = () => {
         <p className="venue-address">Government College of Engineering, Salem</p>
 
         <a
-          href="https://www.google.com/maps/place/Department+of+Computer+Science+and+Engineering/@11.7134021,78.0875824,19.5z"
+          href="https://maps.app.goo.gl/FgdA366p2pibRNNk8"
           target="_blank"
           rel="noopener noreferrer"
           className="direction-btn"
@@ -164,7 +164,6 @@ const Contact = () => {
         </a>
       </div>
 
-      {/* ===== TOAST NOTIFICATION ===== */}
       
     </section>
   );

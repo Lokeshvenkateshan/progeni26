@@ -99,15 +99,17 @@ const eventsData = [
     ],
 
     rules: [
-      "Each team must consist of a minimum of 1 member and a maximum of 4 members.",
-      "The presentation must contain only 7 slides (excluding Welcome and Thank You slides).",
-      "The PPT file must be saved using the Tech Name as the file name.",
-      "All teams must bring their own laptops for the presentation.",
-      "The PPT must be submitted on or before the previous day of the event.",
-      "On spot registration participants must share their PPT before the event and at least 1 hour prior to the start time.",
-      "The total presentation time is 5 minutes (3 minutes for presentation and 2 minutes for Q&A).",
-      "The 3-minute presentation time must be strictly followed. An alarm will be set to monitor the time."
-    ]
+  "Each team must consist of a minimum of 1 member and a maximum of 4 members.",
+  "The presentation must contain only 7 slides (excluding Welcome and Thank You slides).",
+  "The PPT file must be saved using the Tech Name as the file name.",
+  "All teams must bring their own laptops for the presentation.",
+  "The PPT must be submitted on or before the previous day of the event.",
+  "On spot registration participants must share their PPT before the event and at least 1 hour prior to the start time.",
+  "The total presentation time is 5 minutes (3 minutes for presentation and 2 minutes for Q&A).",
+  "The 3-minute presentation time must be strictly followed. An alarm will be set to monitor the time.",
+  "Once Registered send Your PPT to progeni26.gce@gmail.com before March 12."
+]
+
   },
  {
     id: 4,

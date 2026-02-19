@@ -43,7 +43,11 @@ const EventDetails = () => {
 
     return () => clearTimeout(timer);
   }, [id]);
-
+  const parseContent=(s)=>{
+    if(s.includes("Once"))
+        return <b style={{color:"cyan"}}>{s}</b>
+    return s;
+  }
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -126,7 +130,7 @@ const EventDetails = () => {
               <SectionCard title="Rules & Regulations" icon="">
                 <ul className="rules-list">
                   {event.rules.map((rule, index) => (
-                    <li key={index}>{rule}</li>
+                    <li key={index}>{parseContent(rule)}</li>
                   ))}
                 </ul>
               </SectionCard>
