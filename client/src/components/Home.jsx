@@ -33,7 +33,7 @@ const Home = () => {
       <div className="home-container">
         <h4>Government College of Engineering, Salem</h4>
         <h1>National Level Technical Symposium</h1>
-        <h2>Progeni'26.0</h2>
+        <h2>Progen’i 26.0 </h2>
         <h3>Department Of Computer Science And Engineering</h3>
         <h4>
           A computer would deserve to be called intelligent if it could deceive

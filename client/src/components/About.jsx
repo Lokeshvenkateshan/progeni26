@@ -43,11 +43,11 @@ const About = () => {
         </h1>
 
         <h2 className="about-sub-title">
-          Progeni'26.0
+          Progen’i 26.0
         </h2>
 
         <p className="about-content">
-          Progeni’26.0 is a National Level Technical Symposium organized by the
+          Progen’i 26.0 is a National Level Technical Symposium organized by the
           Department of Computer Science and Engineering. It serves as a dynamic
           platform for innovators, developers, designers, and technology enthusiasts
           from across the nation to come together and showcase their skills.

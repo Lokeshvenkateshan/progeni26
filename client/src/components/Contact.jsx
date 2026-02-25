@@ -123,11 +123,11 @@ const Contact = () => {
       <div className="contact-venue">
         <FaMapMarkerAlt className="venue-icon" aria-hidden="true" />
         <h3>Venue</h3>
-        <p className="venue-name">Main Auditorium</p>
+        <p className="venue-name">GCE Auditorium</p>
         <p className="venue-address">Government College of Engineering, Salem</p>
 
         <a
-          href="https://maps.app.goo.gl/FgdA366p2pibRNNk8"
+          href="https://maps.app.goo.gl/DemDYpMFTawZha2ZA"
           target="_blank"
           rel="noopener noreferrer"
           className="direction-btn"
@@ -149,7 +149,7 @@ const Contact = () => {
           aria-label="Follow Progeni on Instagram"
         >
           <FaInstagram aria-hidden="true" /> 
-          <span>@progeni</span>
+          <span>@progeni26</span>
           <span className="social-glow" aria-hidden="true"></span>
         </a>
 

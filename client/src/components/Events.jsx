@@ -5,7 +5,7 @@ import "../style/events.css";
 import { FaMoneyBillWave, FaGift } from "react-icons/fa";
 
 const techEvents = [
-  { id: 1, title: "Logic Crypt", desc: "Logical thinking and problem-solving" },
+  { id: 1, title: "LogiCrypt", desc: "Logical thinking and problem-solving" },
   { id: 2, title: "NormX", desc: "Design scalable and structured databases." },
   {
     id: 3,
