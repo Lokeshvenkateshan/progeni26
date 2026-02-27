@@ -6,6 +6,7 @@ import {
   FaUsers
 } from "react-icons/fa";
 import ScrollReveal from "scrollreveal";
+import ThreeScene from "./ThreeScene";
 
 const About = () => {
 
@@ -45,19 +46,24 @@ const About = () => {
         <h2 className="about-sub-title">
           Progen’i 26.0
         </h2>
+        <div className="about-sub">
+          <p className="about-content">
+            Progen’i 26.0 is a National Level Technical Symposium organized by the
+            Department of Computer Science and Engineering. It serves as a dynamic
+            platform for innovators, developers, designers, and technology enthusiasts
+            from across the nation to come together and showcase their skills.
 
-        <p className="about-content">
-          Progen’i 26.0 is a National Level Technical Symposium organized by the
-          Department of Computer Science and Engineering. It serves as a dynamic
-          platform for innovators, developers, designers, and technology enthusiasts
-          from across the nation to come together and showcase their skills.
+            <br /><br />
 
-          <br /><br />
-
-          Inspired by the words of Alan Turing, we believe intelligence is not just
-          artificial — it is visionary, adaptive, and transformative.
-        </p>
-
+            Inspired by the words of Alan Turing, we believe intelligence is not just
+            artificial — it is visionary, adaptive, and transformative.
+          </p>
+          <div className="about-visual">
+            <div className="about-3d">
+              <ThreeScene />
+            </div>
+          </div>
+        </div>
         <div className="about-cards">
 
           <div className="about-card">
