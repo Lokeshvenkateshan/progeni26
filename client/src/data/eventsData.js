@@ -1,7 +1,7 @@
 const eventsData = [
   {
     id: 1,
-    title: "Logic Crypt",
+    title: "LogiCrypt",
     category: "Technical",
     description:
       "Logicrypt is a coding-based competitive event designed to evaluate participants’ logical thinking, programming aptitude, and problem-solving abilities. The event challenges participants through analytical reasoning and hands-on coding tasks, encouraging efficient and structured solutions under time constraints.",
