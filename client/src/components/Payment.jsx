@@ -97,6 +97,7 @@ export default function Payment({
           txnId,
           screenshot: uploadedUrl,
           pro_number: `PRO-${newProNumber}`,
+          isvalid: -1, 
           createdAt: serverTimestamp(),
         });
       });
