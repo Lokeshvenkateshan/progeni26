@@ -107,7 +107,7 @@ const eventsData = [
   "On spot registration participants must share their PPT before the event and at least 1 hour prior to the start time.",
   "The total presentation time is 5 minutes (3 minutes for presentation and 2 minutes for Q&A).",
   "The 3-minute presentation time must be strictly followed. An alarm will be set to monitor the time.",
-  "Once Registered send Your PPT to progeni26.gce@gmail.com before March 12."
+  "Once Registered send Your PPT to bytetobillion2026@gmail.com before March 12."
 ]
 
   },

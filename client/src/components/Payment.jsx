@@ -155,6 +155,7 @@ export default function Payment({
             <label>UPI Transaction ID</label>
             <input
               type="text"
+              placeholder="Eg:641052050370"
               value={txnId}
               onChange={(e) => {
                 setTxnId(e.target.value);

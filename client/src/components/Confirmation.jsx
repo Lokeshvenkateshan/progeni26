@@ -15,7 +15,7 @@ const Confirmation = ({ formData }) => {
   return (
     <div className="confirm-container">
 
-      <h2 className="confirm-title">Registration Confirmed</h2>
+      <h2 className="confirm-title">Registration Recorded</h2>
 
       <div className="confirm-card">
 
@@ -63,6 +63,7 @@ const Confirmation = ({ formData }) => {
         {/* Thank You Message */}
         <div className="confirm-thanks">
           <p>✨ Thanks for registering!</p>
+           <p>📩 You will receive a confirmation email shortly.</p>
           <p>Keep in touch with us for updates and event details.</p>
         </div>
 
