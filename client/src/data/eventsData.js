@@ -101,6 +101,7 @@ const eventsData = [
     rules: [
   "Each team must consist of a minimum of 1 member and a maximum of 4 members.",
   "The presentation must contain only 7 slides (excluding Welcome and Thank You slides).",
+  "The first slide should include team name, team members and atleast two phone numbers.",
   "The PPT file must be saved using the Tech Name as the file name.",
   "All teams must bring their own laptops for the presentation.",
   "The PPT must be submitted on or before the previous day of the event.",
