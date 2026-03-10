@@ -134,6 +134,7 @@ const Events = () => {
 
           <ul className="events-note-list">
             <li>Entry Fee - Rs.250 only</li>
+            <li>Amount not Refundable!!</li>
             <li>Max 2 Tech + 2 Non-Tech events.</li>
             <li>Lunch & refreshments included.</li>
             <li>Online entry → verify at registration desk.</li>
