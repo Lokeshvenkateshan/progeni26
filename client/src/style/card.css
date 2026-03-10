@@ -1,0 +1,232 @@
+.sh-event-card{
+        position:relative;
+        width:300px;
+        padding:40px 30px; /* border thickness */
+
+        background: linear-gradient(120deg,#ff00a0,#7a04eb);
+        background-size: 200% 200%;
+animation: borderFlow 6s linear infinite;
+        clip-path: polygon(
+        12% 0%, 88% 0%,
+        100% 12%, 100% 88%,
+        88% 100%, 12% 100%,
+        0% 88%, 0% 12%
+        );
+        letter-spacing: 1.6px;
+        transition:.35s;
+    }
+    @keyframes borderFlow{
+    0%{ background-position:0% 50%; }
+    100%{ background-position:200% 50%; }
+}
+    /* INNER CARD BODY */
+    
+    .sh-event-card::after{
+        content:"";
+        position:absolute;
+        inset:2px; /* same as padding */
+
+        background:#000;
+
+        clip-path: polygon(
+        12% 0%, 88% 0%,
+        100% 12%, 100% 88%,
+        88% 100%, 12% 100%,
+        0% 88%, 0% 12%
+        );
+
+        z-index:0;
+    }
+
+    /* CONTENT ABOVE BODY */
+
+    .sh-event-card > *{
+        position:relative;
+        z-index:1;
+    }
+
+    /* HOVER EFFECT */
+
+     .sh-event-card:hover{
+        cursor: pointer;
+        transform:translateY(-10px) scale(1.03);
+
+        box-shadow:
+        0 0 20px rgba(255,0,160,.4),
+        0 0 40px rgba(122,4,235,.4);
+    } 
+     
+    /* HEXAGON STACK */
+
+    .sh-hex-stack{
+        position:absolute;
+        top:-20px;
+        right:-10px;
+    }
+
+    /* HEX SHAPE */
+
+    .sh-hex{
+        width:60px;
+        height:60px;
+        clip-path: polygon(
+        25% 0%,75% 0%,
+        100% 50%,
+        75% 100%,25% 100%,
+        0% 50%
+        );
+        position:absolute;
+        background: rgba(255,0,160,0.08);
+        border:2px solid transparent;
+        background-image:
+            linear-gradient(rgba(20,20,35,.8),rgba(20,20,35,.8)),
+            linear-gradient(120deg,#ff00a0,#7a04eb);
+        background-origin:border-box;
+        background-clip:padding-box,border-box;
+        transition:.35s;
+        box-shadow:0 0 10px rgba(255,0,160,.25);
+    }
+
+    /* LAYER POSITIONS */
+
+    .h1{
+        top:0;
+        right:0;
+        z-index:3;
+    }
+
+    .h2{
+        top:6px;
+        right:6px;
+        opacity:.8;
+    }
+
+    .h3{
+        top:12px;
+        right:12px;
+        opacity:.5;
+    }
+
+    /* HOVER LAYER EFFECT */
+
+    /* .event-card:hover .h1{
+        transform:translate(8px,-8px);
+    }
+
+    .event-card:hover .h2{
+        transform:translate(14px,-14px);
+    }
+
+    .event-card:hover .h3{
+        transform:translate(20px,-20px);
+    } */
+     /* REVERSED HOVER LAYER EFFECT */
+
+
+.sh-event-card:hover .h1{
+    transform:translate(-8px,8px);
+}
+
+.sh-event-card:hover .h2{
+    transform:translate(-14px,14px);
+}
+
+.sh-event-card:hover .h3{
+    transform:translate(-20px,20px);
+}
+
+    /* TEXT */
+
+    .sh-event-content h3{
+        font-size:1.2rem;
+        margin-bottom:10px;
+
+        background: linear-gradient(90deg,#ff00a0,#7a04eb);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .sh-event-content p{
+        font-size:.9rem;
+        color:rgba(220,220,220,.8);
+    }
+
+    .sh-event-content span{
+        font-size:.75rem;
+        opacity: 0.8;
+    }
+
+
+    /* ============================= */
+/*        TABLET / MOBILE        */
+/* ============================= */
+
+@media (max-width:768px){
+
+  .schedule-container{
+    padding:40px 5%;
+  }
+
+  .sh-title{
+    font-size:1.7rem;
+  }
+
+  .sh-section-title{
+    font-size:20px;
+    margin-top:40px;
+  }
+
+  .sh-section-title::after{
+    width:40%;
+  }
+
+  /* GRID */
+
+  .sh-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  /* EVENT CARD */
+
+  .sh-event-card{
+    width:100%;
+    padding:30px 22px;
+  }
+
+  .sh-event-content h3{
+    font-size:1.05rem;
+  }
+
+  .sh-info span{
+    font-size:0.85rem;
+  }
+
+  /* HEXAGON STACK */
+
+  .sh-hex{
+    width:48px;
+    height:48px;
+  }
+
+  .sh-hex-stack{
+    top:-15px;
+    right:-6px;
+  }
+
+  /* BANNERS */
+
+  .sh-banner,
+  .sh-break{
+    font-size:0.9rem;
+    padding:10px 14px;
+  }
+
+  /* NOTE BOX */
+
+  .sh-tech-note{
+    font-size:0.85rem;
+    padding:10px 14px;
+  }
+
+}

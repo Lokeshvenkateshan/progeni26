@@ -103,7 +103,6 @@ const eventsData = [
   "The presentation must contain only 7 slides (excluding Welcome and Thank You slides).",
   "The first slide should include team name, team members and atleast two phone numbers.",
   "The PPT file must be saved using the Tech Name as the file name.",
-  "All teams must bring their own laptops for the presentation.",
   "The PPT must be submitted on or before the previous day of the event.",
   "On spot registration participants must share their PPT before the event and at least 1 hour prior to the start time.",
   "The total presentation time is 5 minutes (3 minutes for presentation and 2 minutes for Q&A).",

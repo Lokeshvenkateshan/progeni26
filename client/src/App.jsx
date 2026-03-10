@@ -12,6 +12,7 @@ import EventDetails from "./components/EventDetails";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
+import Schedule from "./components/Schedule";
 
 function HomePage() {
   return (
@@ -26,7 +27,7 @@ function HomePage() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   if (loading) {
     return <Loader onFinish={() => setLoading(false)} />;
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/schedule" element={<Schedule/>}/>
       </Routes>
     </Router>
   );
