@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "scrollreveal";
 import "../style/events.css";
-import { FaMoneyBillWave, FaGift } from "react-icons/fa";
+import { FaMoneyBillWave, FaGift,FaBed } from "react-icons/fa";
 
 const techEvents = [
   { id: 1, title: "LogiCrypt", desc: "Logical thinking and problem-solving" },
@@ -135,6 +135,7 @@ const Events = () => {
           <ul className="events-note-list">
             <li>Entry Fee - Rs.250 only</li>
             <li>Amount not Refundable!!</li>
+            <li>On Spot Registration avail at Rs.300 only</li>
             <li>Max 2 Tech + 2 Non-Tech events.</li>
             <li>Lunch & refreshments included.</li>
             <li>Online entry → verify at registration desk.</li>
@@ -154,6 +155,10 @@ const Events = () => {
         <div className="events-prize-item">
           <FaGift className="events-prize-icon goodies-icon" />
           <span>Welcome kit for All Participants</span>
+        </div>
+        <div className="events-prize-item">
+          <FaBed className="events-prize-icon goodies-icon" />
+          <span>For Accomodation Contact in Prior</span>
         </div>
       </div>
 
