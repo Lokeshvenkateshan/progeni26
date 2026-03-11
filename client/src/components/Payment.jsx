@@ -17,7 +17,7 @@ export default function Payment({
   onComplete,
 }) {
 
-  const UPI_ID = "raviharish296@okicici";
+  const UPI_ID = "thamilnataraj77@oksbi";
 
   const [txnId, setTxnId] = useState(formData.txnId || "");
   const [screenshot, setScreenshot] = useState(formData.screenshot || null);
@@ -128,7 +128,7 @@ export default function Payment({
         {/* QR Section */}
         <div className="pay-qr-section">
           <div className="pay-qr-box">
-            <img src="/payqr.jpeg" alt="UPI QR" className="pay-qr-img" />
+            <img src="/Tamilqr.jpeg" alt="UPI QR" className="pay-qr-img" />
           </div>
           <p>Scan & Pay using any UPI App</p>
         </div>
