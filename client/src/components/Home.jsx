@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Countdown from "./CountDown";
 import "../style/home.css";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "scrollreveal";
 import { FaCalendarAlt } from "react-icons/fa";
-
+import RegistrationModal from "./RegistrationModal";
 
 const Home = () => {
   const navigate = useNavigate();
+   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const sr = ScrollReveal({
@@ -30,6 +31,9 @@ const Home = () => {
 
   return (
     <section className="home-section">
+       {showModal && (
+        <RegistrationModal onClose={() => setShowModal(false)} />
+      )}
       <div className="home-container">
         <h4>Government College of Engineering, Salem</h4>
         <h1>National Level Technical Symposium</h1>
