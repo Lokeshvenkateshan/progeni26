@@ -86,7 +86,7 @@ export default function Schedule() {
     {
       title: "LOGICRYPT",
       duration: 60,
-      location: "Round-1: L4 classroom \n Round-2: Whitfield Diffie Lab [Java Lab]",
+      location: "Round-1: Edgar Lab[C lab]\n Round-2: Whitfield Diffie Lab [Java Lab]",
     },
     {
       title: "NORM-X",

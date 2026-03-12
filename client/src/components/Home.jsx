@@ -8,7 +8,7 @@ import RegistrationModal from "./RegistrationModal";
 
 const Home = () => {
   const navigate = useNavigate();
-   const [showModal, setShowModal] = useState(false);
+   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const sr = ScrollReveal({
