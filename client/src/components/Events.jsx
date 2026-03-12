@@ -134,8 +134,7 @@ const Events = () => {
 
           <ul className="events-note-list">
             <li>Entry Fee - Rs.250 only</li>
-            <li>Amount not Refundable!!</li>
-            <li>On Spot Registration avail at Rs.300 only</li>
+            <li>Amount not Refundable!!</li>  
             <li>Max 2 Tech + 2 Non-Tech events.</li>
             <li>Lunch & refreshments included.</li>
             <li>Online entry → verify at registration desk.</li>
@@ -162,12 +161,12 @@ const Events = () => {
         </div>
       </div>
 
-      <button
+      {/* <button
         className="events-register-btn"
         onClick={() => navigate("/register")}
       >
         Register Now
-      </button>
+      </button> */}
     </section>
   );
 };

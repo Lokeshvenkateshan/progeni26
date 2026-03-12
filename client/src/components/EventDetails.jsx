@@ -166,9 +166,9 @@ const EventDetails = () => {
                 )}
 
               </dl>
-              <button className="event-register-btn" onClick={()=> navigate('/register')}>
+             {/*  <button className="event-register-btn" onClick={()=> navigate('/register')}>
                 Register Now
-              </button>
+              </button> */}
             </div>
           </aside>
         </div>

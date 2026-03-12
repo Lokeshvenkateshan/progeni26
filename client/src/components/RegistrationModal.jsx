@@ -64,7 +64,8 @@ const RegistrationModal = ({ onClose }) => {
 
           <p className="modd-p">
             Thank you for your interest in Progen’i 26.0.  
-            Online registrations are now closed.  
+            Online registrations are now closed.
+            There is no on spot registrations  
             See you at the symposium!
           </p>
 
