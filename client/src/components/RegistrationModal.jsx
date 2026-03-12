@@ -63,15 +63,17 @@ const RegistrationModal = ({ onClose }) => {
           </h2>
 
           <p className="modd-p">
-            Thank you for your interest in Progen’i 26.0.  
+            Thank you for your interest in Progen’i 26.0.
             Online registrations are now closed.
-            There is no on spot registrations  
+            There is no on spot registrations.
             See you at the symposium!
           </p>
 
           <p className="credits">
             Web Services by <br />
-            Lokesh V · Gajaendrran Ra · Karthik B
+            <span className="names">
+              Lokesh V · Gajaendrran Ra · Karthik B
+            </span>
           </p>
 
           <button className="modal-close" onClick={onClose}>
