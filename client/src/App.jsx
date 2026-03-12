@@ -27,7 +27,7 @@ function HomePage() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   if (loading) {
     return <Loader onFinish={() => setLoading(false)} />;
