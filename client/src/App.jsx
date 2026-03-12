@@ -40,7 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/event/:id" element={<EventDetails />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/schedule" element={<Schedule/>}/>
       </Routes>
     </Router>

@@ -8,7 +8,7 @@ import RegistrationModal from "./RegistrationModal";
 
 const Home = () => {
   const navigate = useNavigate();
-   const [showModal, setShowModal] = useState(true);
+   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const sr = ScrollReveal({
@@ -45,7 +45,7 @@ const Home = () => {
         </h4>
         <span className="ath">- Alan Turing</span>
 
-        <Countdown targetDate="March 13, 2026 00:00:00" />
+        <Countdown targetDate="March 13, 2026 09:00:00" />
 
         <p className="event-date"> March 13, 2026</p>
 
@@ -54,11 +54,11 @@ const Home = () => {
             <button>Discover Events</button>
           </a>
 
-          <a href="#about">
-            <button>Who We Are</button>
-          </a>
+          <>
+            <button  onClick={() => navigate("/schedule")}>View Schedule</button>
+          </>
 
-          <button className="primary" onClick={() => navigate("/register")}>
+          <button className="primary" onClick={() => setShowModal(true)}>
             Register Now
           </button>
         </div>
